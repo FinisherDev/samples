@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maison Bloom | Order Form</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--barbg:#fff;--bartx:#2b2b2b;--pagebg:#ECE8E4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--barbg:#1f1d1c;--bartx:#eee;--pagebg:#141312;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--pagebg);font-family:Jost,system-ui,sans-serif;line-height:1.6;color:var(--bartx)}
+.bar{position:sticky;top:0;z-index:5;background:var(--barbg);color:var(--bartx);padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;box-shadow:0 1px 0 rgba(0,0,0,.12)}
+.bar button{font:500 14px Jost,sans-serif;border:2px solid transparent;border-radius:999px;padding:8px 16px;cursor:pointer;color:#fff}
+.bar button[aria-pressed="true"]{border-color:var(--bartx)}
+.bar button:focus-visible{outline:2px solid var(--bartx);outline-offset:2px}
+.b-rose{background:#9C3D54}.b-plum{background:#4A1F3D}.b-cocoa{background:#5A2E24}
+.b-mode{background:var(--bartx)!important;color:var(--barbg)!important}
+.hint{width:100%;text-align:center;font-size:13px;opacity:.75;margin:0}
+#site{--bg:#FFF9F2;--ink:#3A2228;--soft:#F7E1DD;--soft2:#F1CFCB;--head:#7E2F43;--gold:#B8924A;--navbg:#FFF9F2;--navtx:#3A2228;--logo:#9C3D54;--btn:#9C3D54;--btnt:#FFF9F2;--field:#fff;--line:#E3C3BF;--err:#B3261E;
+background:var(--bg);color:var(--ink);max-width:1080px;margin:0 auto;min-height:100vh}
+#site[data-theme="plum"]{--bg:#FBF6EE;--ink:#2E1528;--soft:#F3E3C3;--soft2:#E9D3A8;--head:#4A1F3D;--gold:#B8903F;--navbg:#351430;--navtx:#F3E3C3;--logo:#F3E3C3;--btn:#4A1F3D;--btnt:#F3E3C3;--field:#fff;--line:#DCC79B}
+#site[data-theme="cocoa"]{--bg:#FFF8F1;--ink:#3A2018;--soft:#F8E4D6;--soft2:#EBCBB5;--head:#5A2E24;--navbg:#FFF8F1;--navtx:#3A2018;--logo:#5A2E24;--btn:#5A2E24;--btnt:#FFF8F1;--field:#fff;--line:#E4C6B0}
+#site[data-theme="rose"][data-mode="dark"]{--bg:#2A1A1E;--ink:#F6E8E4;--soft:#3A2429;--soft2:#4A2D33;--head:#F1B8C4;--gold:#D4AE68;--navbg:#1F1217;--navtx:#F6E8E4;--logo:#E58AA0;--btn:#B84A65;--btnt:#FFF9F2;--field:#2A1A1E;--line:#5A3A42;--err:#FF9A92}
+#site[data-theme="plum"][data-mode="dark"]{--bg:#1E0F1A;--ink:#F3E3C3;--soft:#2E1727;--soft2:#3F2236;--head:#E9D3A8;--gold:#D6B56E;--navbg:#150A12;--navtx:#F3E3C3;--logo:#F3E3C3;--btn:#E9D3A8;--btnt:#351430;--field:#1E0F1A;--line:#58364D;--err:#FF9A92}
+#site[data-theme="cocoa"][data-mode="dark"]{--bg:#1F1410;--ink:#F6E6DA;--soft:#30201A;--soft2:#42302A;--head:#EBCBB5;--gold:#D4AE68;--navbg:#170E0B;--navtx:#F6E6DA;--logo:#EBCBB5;--btn:#EBCBB5;--btnt:#3A2018;--field:#1F1410;--line:#5A4036;--err:#FF9A92}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.1;margin:0}
+a{color:inherit;text-decoration:none}
+nav{background:var(--navbg);color:var(--navtx);display:flex;justify-content:space-between;align-items:center;padding:16px 24px}
+.links{display:flex;gap:18px;font-size:15px}
+.logo{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;color:var(--logo)}
+.logo small{display:block;font:400 12px Jost,sans-serif;color:var(--gold);letter-spacing:.06em}
+main{max-width:640px;margin:0 auto;padding:32px 20px 56px}
+h1{font-size:clamp(34px,6vw,48px);color:var(--head);text-align:center}
+.sub{text-align:center;margin:8px 0 24px}
+.prog{display:flex;gap:8px;margin-bottom:22px}
+.prog div{flex:1;border-top:4px solid var(--line);padding-top:6px;font-size:13px;opacity:.7}
+.prog div.on{border-color:var(--gold);opacity:1;font-weight:500}
+.panel{background:var(--soft);border-radius:18px;padding:24px}
+.panel h2{font-size:30px;color:var(--head);margin-bottom:14px}
+fieldset{border:0;padding:0;margin:0 0 6px}
+legend{font-weight:500;margin-bottom:8px;padding:0}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tile{position:relative}
+.tile input{position:absolute;opacity:0;inset:0;cursor:pointer;width:100%;height:100%;margin:0}
+.tile span{display:block;text-align:center;padding:16px 8px;border:2px solid var(--line);border-radius:14px;background:var(--field);font-weight:500}
+.tile input:checked+span{border-color:var(--gold);background:var(--soft2)}
+.tile input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
+.f{margin-bottom:14px}
+label.l{display:block;font-weight:500;margin-bottom:4px}
+input[type=text],input[type=tel],input[type=date],input[type=number],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px}
+textarea{min-height:90px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:var(--err);font-size:14px;min-height:20px;margin:4px 0 0}
+.help{font-size:13px;opacity:.8;margin:2px 0 0}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:18px}
+.btn{font:500 16px Jost,sans-serif;cursor:pointer;background:var(--btn);color:var(--btnt);border:2px solid var(--btn);padding:12px 26px;border-radius:999px;display:inline-block}
+.btn.ghost{background:transparent;color:var(--head);border-color:var(--gold)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sum{background:var(--field);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.sum dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px}
+.sum dt{font-weight:500}.sum dd{margin:0}
+.done{text-align:center}
+.done .tick{width:64px;height:64px;border-radius:50%;background:var(--gold);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 12px}
+pre{white-space:pre-wrap;text-align:left;background:var(--field);border:1.5px dashed var(--gold);border-radius:12px;padding:14px;font:15px/1.5 Jost,sans-serif;margin:14px 0}
+[hidden]{display:none!important}
+@media(max-width:560px){.tiles,.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bar" role="group" aria-label="Choose palette">
+<button class="b-rose" aria-pressed="true" data-t="rose">Blush & Rose</button>
+<button class="b-plum" aria-pressed="false" data-t="plum">Plum & Champagne</button>
+<button class="b-cocoa" aria-pressed="false" data-t="cocoa">Cocoa & Champagne</button>
+<button class="b-mode" id="mode" aria-pressed="false">Dark mode</button>
+<p class="hint">Demo only: nothing you type is saved or sent anywhere.</p>
+</div>
+<div id="site" data-theme="rose">
+    <nav>
+        <a class="logo" href="index.html">Maison Bloom<small>Cakes · Event Décor</small></a>
+        <div class="links"><a href="#">Cakes</a><a href="#">Décor</a><a href="cake-decor-gallery.html">Gallery</a></div>
+    </nav>
+<main>
+<h1 id="title">Tell us about your celebration</h1>
+<p class="sub" id="sub">Three quick steps. We’ll reply with a quote within 24 hours.</p>
+<div class="prog" id="prog" aria-label="Progress"><div class="on">1. Your order</div><div>2. The details</div><div>3. Contact</div></div>
+
+<form id="form" novalidate>
+<section class="panel" data-step="1">
+<h2>What do you need?</h2>
+<fieldset>
+<legend>Choose one</legend>
+<div class="tiles">
+<label class="tile"><input type="radio" name="what" value="Cake"><span>Cake</span></label>
+<label class="tile"><input type="radio" name="what" value="Event décor"><span>Event décor</span></label>
+<label class="tile"><input type="radio" name="what" value="Cake and décor"><span>Both</span></label>
+</div>
+</fieldset>
+<p class="err" data-err="what" role="alert"></p>
+<div class="f"><label class="l" for="occ">What are you celebrating?</label>
+<select id="occ"><option value="">Choose an occasion</option><option>Wedding</option><option>Birthday</option><option>Baby shower</option><option>Anniversary</option><option>Corporate event</option><option>Other</option></select>
+<p class="err" data-err="occ" role="alert"></p></div>
+<div class="nav"><span></span><button type="button" class="btn" data-next>Continue</button></div>
+</section>
+
+<section class="panel" data-step="2" hidden>
+<h2>The details</h2>
+<div class="two">
+<div class="f"><label class="l" for="date">Event date</label><input type="date" id="date"><p class="err" data-err="date" role="alert"></p></div>
+<div class="f"><label class="l" for="guests">Number of guests</label><input type="number" id="guests" min="1" inputmode="numeric"><p class="err" data-err="guests" role="alert"></p></div>
+</div>
+<div class="f"><label class="l" for="loc">Event location</label><input type="text" id="loc" placeholder="Area and city, e.g. GRA, Benin City"><p class="err" data-err="loc" role="alert"></p></div>
+<div class="f" id="cakeF"><label class="l" for="flav">Cake flavour and size</label><input type="text" id="flav" placeholder="e.g. Vanilla, 3 tiers"><p class="help">Not sure? Leave it and we’ll advise you.</p></div>
+<div class="f" id="decF"><label class="l" for="theme">Décor theme or colours</label><input type="text" id="theme" placeholder="e.g. Ivory and gold, garden theme"></div>
+<div class="f"><label class="l" for="bud">Budget</label>
+<select id="bud"><option value="">Choose a range</option><option>Under ₦50,000</option><option>₦50,000 to ₦150,000</option><option>₦150,000 to ₦500,000</option><option>Above ₦500,000</option><option>Not sure yet</option></select>
+<p class="err" data-err="bud" role="alert"></p></div>
+<div class="f"><label class="l" for="msg">Anything else we should know?</label><textarea id="msg"></textarea></div>
+<div class="nav"><button type="button" class="btn ghost" data-back>Back</button><button type="button" class="btn" data-next>Continue</button></div>
+</section>
+
+<section class="panel" data-step="3" hidden>
+<h2>How can we reach you?</h2>
+<div class="f"><label class="l" for="name">Your name</label><input type="text" id="name" autocomplete="name"><p class="err" data-err="name" role="alert"></p></div>
+<div class="f"><label class="l" for="tel">WhatsApp number</label><input type="tel" id="tel" autocomplete="tel" placeholder="e.g. 0803 000 0000"><p class="err" data-err="tel" role="alert"></p></div>
+<div class="sum"><dl id="sum"></dl></div>
+<div class="nav"><button type="button" class="btn ghost" data-back>Back</button><button type="submit" class="btn">Send my request</button></div>
+</section>
+</form>
+
+<section class="panel done" id="done" hidden>
+<div class="tick" aria-hidden="true">✓</div>
+<h2 id="thanks">Thank you!</h2>
+<p>Your request is ready. Tap the button to send it to us on WhatsApp, and we’ll reply within 24 hours with your quote.</p>
+<pre id="preview"></pre>
+<a class="btn" id="wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+<p class="help">In the live site, the message above opens in WhatsApp already written.</p>
+<div class="nav" style="justify-content:center"><button type="button" class="btn ghost" id="again">Start a new request</button></div>
+</section>
+</main>
+</div>
+<script>
+var site=document.getElementById('site'),modeBtn=document.getElementById('mode');
+var WA='2340000000000';
+function setMode(d){site.setAttribute('data-mode',d?'dark':'light');modeBtn.setAttribute('aria-pressed',d?'true':'false');modeBtn.textContent=d?'Light mode':'Dark mode'}
+setMode(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
+modeBtn.addEventListener('click',function(){setMode(site.getAttribute('data-mode')!=='dark')});
+document.querySelectorAll('.bar button[data-t]').forEach(function(b){
+b.addEventListener('click',function(){site.setAttribute('data-theme',b.dataset.t);
+document.querySelectorAll('.bar button[data-t]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')})})});
+var $=function(id){return document.getElementById(id)};
+var step=1,steps=document.querySelectorAll('[data-step]'),prog=document.querySelectorAll('#prog div');
+var d=new Date();$('date').min=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+function what(){var r=document.querySelector('input[name=what]:checked');return r?r.value:''}
+function show(n){step=n;steps.forEach(function(s){s.hidden=+s.dataset.step!==n});
+prog.forEach(function(p,i){p.className=i+1===n?'on':''});
+var w=what();$('cakeF').hidden=w==='Event décor';$('decF').hidden=w==='Cake';
+if(n===3)summary();window.scrollTo({top:0,behavior:'smooth'})}
+function err(k,m){document.querySelector('[data-err='+k+']').textContent=m||''}
+function check(n){var ok=true,m;
+if(n===1){if(!what()){err('what','Choose cake, décor or both.');ok=false}else err('what');
+if(!$('occ').value){err('occ','Choose an occasion.');ok=false}else err('occ')}
+if(n===2){m=$('date').value;if(!m){err('date','Pick your event date.');ok=false}else if(m<$('date').min){err('date','Choose a date from today onward.');ok=false}else err('date');
+if(!($('guests').value>0)){err('guests','Enter the number of guests.');ok=false}else err('guests');
+if(!$('loc').value.trim()){err('loc','Tell us where the event will be.');ok=false}else err('loc');
+if(!$('bud').value){err('bud','Choose a budget range.');ok=false}else err('bud')}
+if(n===3){if(!$('name').value.trim()){err('name','Enter your name.');ok=false}else err('name');
+var t=$('tel').value.replace(/[\s\-()+]/g,'');if(!/^\d{10,14}$/.test(t)){err('tel','Enter a valid phone number.');ok=false}else err('tel')}
+return ok}
+function rows(){var r=[['Order',what()],['Occasion',$('occ').value],['Date',$('date').value],['Guests',$('guests').value],['Location',$('loc').value.trim()]];
+if(what()!=='Event décor'&&$('flav').value.trim())r.push(['Cake',$('flav').value.trim()]);
+if(what()!=='Cake'&&$('theme').value.trim())r.push(['Décor',$('theme').value.trim()]);
+r.push(['Budget',$('bud').value]);if($('msg').value.trim())r.push(['Notes',$('msg').value.trim()]);return r}
+function summary(){var dl=$('sum');dl.textContent='';rows().forEach(function(r){var a=document.createElement('dt'),b=document.createElement('dd');a.textContent=r[0];b.textContent=r[1];dl.appendChild(a);dl.appendChild(b)})}
+function msg(){var n=$('name').value.trim();return 'Hello Maison Bloom, my name is '+n+'. I would like to request a quote.\n\n'+rows().map(function(r){return r[0]+': '+r[1]}).join('\n')+'\n\nMy number: '+$('tel').value.trim()}
+document.querySelectorAll('[data-next]').forEach(function(b){b.addEventListener('click',function(){if(check(step))show(step+1)})});
+document.querySelectorAll('[data-back]').forEach(function(b){b.addEventListener('click',function(){show(step-1)})});
+$('form').addEventListener('submit',function(e){e.preventDefault();if(!check(3))return;
+var m=msg();$('preview').textContent=m;$('wa').href='https://wa.me/'+WA+'?text='+encodeURIComponent(m);
+$('thanks').textContent='Thank you, '+$('name').value.trim().split(' ')[0]+'!';
+$('form').hidden=true;$('prog').hidden=true;$('title').hidden=true;$('sub').hidden=true;$('done').hidden=false;window.scrollTo({top:0,behavior:'smooth'})});
+$('again').addEventListener('click',function(){$('form').reset();$('form').hidden=false;$('prog').hidden=false;$('title').hidden=false;$('sub').hidden=false;$('done').hidden=true;show(1)});
+show(1);
+</script>
+</body>
+</html>

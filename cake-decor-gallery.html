@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+            <title>Maison Bloom | Layout 2</title>
+            <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--barbg:#fff;--bartx:#2b2b2b;--pagebg:#ECE8E4;
+        box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+        @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--barbg:#1f1d1c;--bartx:#eee;--pagebg:#141312;color-scheme:dark}}
+        *{box-sizing:border-box}
+        body{margin:0;background:var(--pagebg);font-family:Jost,system-ui,sans-serif;line-height:1.6;color:var(--bartx)}
+        .bar{position:sticky;top:0;z-index:5;background:var(--barbg);color:var(--bartx);padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;box-shadow:0 1px 0 rgba(0,0,0,.12)}
+        .bar button{font:500 14px Jost,sans-serif;border:2px solid transparent;border-radius:999px;padding:8px 16px;cursor:pointer;color:#fff}
+        .bar button[aria-pressed="true"]{border-color:var(--bartx)}
+        .bar button:focus-visible{outline:2px solid var(--bartx);outline-offset:2px}
+        .b-rose{background:#9C3D54}.b-plum{background:#4A1F3D}.b-cocoa{background:#5A2E24}
+        .hint{width:100%;text-align:center;font-size:13px;opacity:.75;margin:0}
+        #site{--bg:#FFF9F2;--ink:#3A2228;--soft:#F7E1DD;--soft2:#F1CFCB;--head:#7E2F43;--gold:#B8924A;--navbg:#FFF9F2;--navtx:#3A2228;--logo:#9C3D54;--herotx:#7E2F43;--btn:#9C3D54;--btnt:#FFF9F2;--ctabg:#7E2F43;--ctatx:#FFF9F2;--cbtn:#FFF9F2;--cbtnt:#9C3D54;
+        background:var(--bg);color:var(--ink);max-width:1080px;margin:0 auto}
+        #site[data-theme="plum"]{--bg:#FBF6EE;--ink:#2E1528;--soft:#F3E3C3;--soft2:#E9D3A8;--head:#4A1F3D;--gold:#B8903F;--navbg:#351430;--navtx:#F3E3C3;--logo:#F3E3C3;--herotx:#F3E3C3;--btn:#E9D3A8;--btnt:#351430;--ctabg:#4A1F3D;--ctatx:#F3E3C3;--cbtn:#E9D3A8;--cbtnt:#351430}
+        #site[data-theme="cocoa"]{--bg:#FFF8F1;--ink:#3A2018;--soft:#F8E4D6;--soft2:#EBCBB5;--head:#5A2E24;--gold:#B8924A;--navbg:#FFF8F1;--navtx:#3A2018;--logo:#5A2E24;--herotx:#5A2E24;--btn:#5A2E24;--btnt:#FFF8F1;--ctabg:#5A2E24;--ctatx:#FFF8F1;--cbtn:#FFF8F1;--cbtnt:#5A2E24}
+        .b-mode{background:var(--bartx)!important;color:var(--barbg)!important}
+        #site[data-theme="rose"][data-mode="dark"]{--bg:#2A1A1E;--ink:#F6E8E4;--soft:#3A2429;--soft2:#4A2D33;--head:#F1B8C4;--gold:#D4AE68;--navbg:#1F1217;--navtx:#F6E8E4;--logo:#E58AA0;--herotx:#F1B8C4;--btn:#B84A65;--btnt:#FFF9F2;--ctabg:#4A2030;--ctatx:#FFF9F2;--cbtn:#FFF9F2;--cbtnt:#7E2F43}
+        #site[data-theme="plum"][data-mode="dark"]{--bg:#1E0F1A;--ink:#F3E3C3;--soft:#2E1727;--soft2:#3F2236;--head:#E9D3A8;--gold:#D6B56E;--navbg:#150A12;--navtx:#F3E3C3;--logo:#F3E3C3;--herotx:#F3E3C3;--btn:#E9D3A8;--btnt:#351430;--ctabg:#3A1A31;--ctatx:#F3E3C3;--cbtn:#E9D3A8;--cbtnt:#351430}
+        #site[data-theme="cocoa"][data-mode="dark"]{--bg:#1F1410;--ink:#F6E6DA;--soft:#30201A;--soft2:#42302A;--head:#EBCBB5;--gold:#D4AE68;--navbg:#170E0B;--navtx:#F6E6DA;--logo:#EBCBB5;--herotx:#EBCBB5;--btn:#EBCBB5;--btnt:#3A2018;--ctabg:#3A241C;--ctatx:#F6E6DA;--cbtn:#F6E6DA;--cbtnt:#5A2E24}
+        h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.1;margin:0}
+        a{color:inherit;text-decoration:none}
+        nav{background:var(--navbg);color:var(--navtx);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:16px 24px}
+        .logo{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;color:var(--logo);text-align:center}
+        .logo small{display:block;font:400 12px Jost,sans-serif;color:var(--gold);letter-spacing:.06em}
+        .links{display:flex;gap:18px;font-size:15px}
+        .nr{justify-self:end}
+        .btn{display:inline-block;background:var(--btn);color:var(--btnt);padding:12px 26px;border-radius:999px;font-weight:500}
+        .slot{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;background-color:var(--soft2);background-size:cover;background-position:center;border:2px dashed var(--gold);font-size:14px;color:var(--ink);overflow:hidden}
+        .slot input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+        .slot:focus-within{outline:2px solid var(--gold);outline-offset:-4px}
+        .slot.has{border-style:solid;border-color:transparent}
+        .slot.has span{display:none}
+        .slot span{padding:8px;max-width:22ch}
+        .hero{position:relative}
+        .slot-hero{height:500px;border-radius:0}
+        .herocard{position:absolute;left:24px;bottom:-40px;max-width:430px;background:var(--navbg);color:var(--navtx);padding:30px 32px;border-radius:4px 36px 4px 36px;pointer-events:none}
+        .herocard *{pointer-events:auto}
+        .herocard h1{font-size:clamp(34px,5vw,50px);color:var(--herotx)}
+        .herocard p{margin:12px 0 20px}
+        .intro{text-align:center;padding:84px 24px 20px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:26px;color:var(--head);max-width:640px;margin:0 auto}
+        .zig{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:36px 24px}
+        .zig.flip .slot{order:2}
+        .slot-z{height:380px;border-radius:200px 200px 12px 12px}
+        .zig.flip .slot-z{border-radius:12px 12px 200px 200px}
+        .zig h2{font-size:40px;color:var(--head);margin-bottom:10px}
+        .zig p{max-width:38ch;margin:0 0 18px}
+        .zig .more{color:var(--head);font-weight:500;border-bottom:2px solid var(--gold);padding-bottom:2px}
+        .gal{padding:40px 24px}
+        .gal h2{text-align:center;font-size:38px;color:var(--head);margin-bottom:22px}
+        .mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,170px);gap:12px}
+        .mosaic .slot{border-radius:10px}
+        .mosaic .big{grid-column:span 2;grid-row:span 2}
+        .steps{background:var(--soft);padding:48px 24px;text-align:center}
+        .steps h2{font-size:36px;color:var(--head);margin-bottom:26px}
+        .row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left}
+        .step{border-top:3px solid var(--gold);padding-top:14px}
+        .step h3{font-size:26px;color:var(--head)}
+        .step p{margin:6px 0 0;font-size:15px}
+        .cta{background:var(--ctabg);color:var(--ctatx);text-align:center;padding:48px 20px}
+        .cta h2{font-style:italic;font-weight:500;font-size:clamp(26px,4vw,38px);margin-bottom:18px}
+        .cta .btn{background:var(--cbtn);color:var(--cbtnt)}
+        footer{text-align:center;padding:26px 20px;font-size:14px}
+        footer b{color:var(--gold);font-weight:500}
+        @media(max-width:760px){nav{grid-template-columns:1fr auto}.links{display:none}.logo{text-align:left}.slot-hero{height:340px}.herocard{position:relative;left:0;bottom:0;margin:-50px 16px 0;max-width:none}.intro{padding-top:40px}.zig,.row{grid-template-columns:1fr}.zig.flip .slot{order:0}.slot-z{height:300px}.mosaic{grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:150px}.mosaic .big{grid-column:span 2;grid-row:span 2}}
+    </style>
+</head>
+    <body>
+        <div class="bar" role="group" aria-label="Choose palette">
+            <button class="b-rose" aria-pressed="true" data-t="rose">Blush & Rose</button>
+            <button class="b-plum" aria-pressed="false" data-t="plum">Plum & Champagne</button>
+            <button class="b-cocoa" aria-pressed="false" data-t="cocoa">Cocoa & Champagne</button>
+            <button class="b-mode" id="mode" aria-pressed="false">Dark mode</button>
+            <p class="hint">Tap any dashed photo box to add a photo. Photos stay on your device only.</p>
+        </div>
+        <div id="site" data-theme="rose">
+            <nav>
+                <div class="links"><a href="#">Cakes</a><a href="#">Décor</a><a href="#">Gallery</a></div>
+                <a class="logo" href="index.html">Maison Bloom<small>Cakes · Event Décor</small></a>
+                <div class="nr"><a class="btn" href="cake-decor-order.html">Order now</a></div>
+            </nav>
+            <section class="gal">
+            <h2>Recent celebrations</h2>
+                <div class="mosaic">
+                    <label class="slot big"><input type="file" accept="image/*" aria-label="Add gallery photo 1"><span>Gallery photo<br>large</span></label>
+                    <label class="slot"><input type="file" accept="image/*" aria-label="Add gallery photo 2"><span>Gallery photo</span></label>
+                    <label class="slot"><input type="file" accept="image/*" aria-label="Add gallery photo 3"><span>Gallery photo</span></label>
+                    <label class="slot"><input type="file" accept="image/*" aria-label="Add gallery photo 4"><span>Gallery photo</span></label>
+                    <label class="slot"><input type="file" accept="image/*" aria-label="Add gallery photo 5"><span>Gallery photo</span></label>
+                    <label class="slot"><input type="file" accept="image/*" aria-label="Add gallery photo 2"><span>Gallery photo</span></label>
+                    <label class="slot"><input type="file" accept="image/*" aria-label="Add gallery photo 3"><span>Gallery photo</span></label>
+                    <label class="slot"><input type="file" accept="image/*" aria-label="Add gallery photo 4"><span>Gallery photo</span></label>
+                    <label class="slot"><input type="file" accept="image/*" aria-label="Add gallery photo 5"><span>Gallery photo</span></label>
+                </div>
+            </section>
+            <section class="steps">
+                <h2>How to order</h2>
+                <div class="row">
+                    <div class="step"><h3>1. Tell us your plan</h3><p>Choose a cake, décor or both. Add your date, venue and budget.</p></div>
+                    <div class="step"><h3>2. Get your quote</h3><p>We reply with design ideas and a clear price within 24 hours.</p></div>
+                    <div class="step"><h3>3. Confirm on WhatsApp</h3><p>Pay your deposit and we lock in your date.</p></div>
+                </div>
+            </section>
+            <section class="cta">
+                <h2>Let’s create something beautiful together.</h2>
+                <a class="btn" href="#">Book a consultation</a>
+            </section>
+            <footer><b>Maison Bloom</b> · Instagram · WhatsApp · Email<br>© 2026 Maison Bloom. Sample design.</footer>
+        </div>
+        <script>
+            var site=document.getElementById('site');
+            var modeBtn=document.getElementById('mode');
+            function setMode(d){
+                site.setAttribute('data-mode',d?'dark':'light');
+                modeBtn.setAttribute('aria-pressed',d?'true':'false');
+                modeBtn.textContent=d?'Light mode':'Dark mode'
+            }
+            setMode(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
+            modeBtn.addEventListener('click',function(){setMode(site.getAttribute('data-mode')!=='dark')});
+            document.querySelectorAll('.bar button[data-t]').forEach(function(b){
+                b.addEventListener('click',function(){
+                    site.setAttribute('data-theme',b.dataset.t);
+                    document.querySelectorAll('.bar button[data-t]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+                });
+            });
+            document.querySelectorAll('.slot input').forEach(function(inp){
+                inp.addEventListener('change',function(){
+                    var f=inp.files&&inp.files[0];if(!f)return;
+                    var r=new FileReader();
+                    r.onload=function(){var s=inp.parentNode;s.style.backgroundImage='url("'+r.result+'")';s.classList.add('has')};
+                    r.readAsDataURL(f);
+                });
+            });
+        </script>
+    </body>
+</html>
